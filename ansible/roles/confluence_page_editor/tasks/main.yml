@@ -1,0 +1,17 @@
+---
+# Comment about "when: page_id == 24546610"
+# Normally we would use group names to separate the tasks
+# However, they overlap (barium is part of microsites, argus and holidayautos)
+# Instead, we are using the page_id as a unique identifier
+
+- name: Microsites | Update confluence page with deploy versions
+  import_tasks: deployment_versions_microsites.yml
+  when: page_id == 24546611
+
+- name: web stag | Update confluence page
+  import_tasks: sum_available_patches.yml
+  when: page_id == 24548831
+
+- name: web prod | Update confluence page
+  import_tasks: sum_available_patches.yml
+  when: page_id == 24547541

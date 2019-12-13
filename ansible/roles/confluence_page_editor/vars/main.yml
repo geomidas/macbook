@@ -1,0 +1,14 @@
+---
+
+# Confluence vars
+page: "{{page_dir}}/page.txt"
+page_old: "{{page_dir}}/page.txt.old"
+page_sorted: "{{page_dir}}/sorted.txt"
+page_unsorted: "{{page_dir}}/unsorted.txt"
+confluence_credentials: 'username:password'
+
+# Slack vars
+slack_token: myslacktoken 
+slack_channel: '#mychannel'
+slack_emoji: ':eyes:'
+slack_user: username 
