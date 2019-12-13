@@ -150,7 +150,7 @@
 
 - name: Get the confluence page version number
   local_action: >
-    shell curl -s -u {{confluence_credentials}} -X GET http://confluence.cartrawler.com/pages/viewpreviousversions.action?pageId={{page_id}} | grep '(v. ' | sed 's/[^0-9]*//g' 
+    shell curl -s -u {{confluence_credentials}} -X GET http://confluence.mycompany.com/pages/viewpreviousversions.action?pageId={{page_id}} | grep '(v. ' | sed 's/[^0-9]*//g' 
     warn=false
   register: page_version
   changed_when: false
@@ -176,7 +176,7 @@
 
 - name: Update confluence page
   local_action: >
-    shell curl -s -u "{{confluence_credentials}}" -X PUT -H "{{content_type}}" -d '{{jsonfile}}' http://confluence.cartrawler.com/rest/api/content/{{page_id}}
+    shell curl -s -u "{{confluence_credentials}}" -X PUT -H "{{content_type}}" -d '{{jsonfile}}' http://confluence.mycompany.com/rest/api/content/{{page_id}}
     warn=false
   register: update_confluence
   run_once: true
