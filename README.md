@@ -52,6 +52,7 @@ Disable the welcome message when opening a cli
                shellcheck \
                findutils \
                tldr \
+               watch \
                httpie \
                telnet \
                rsync \
