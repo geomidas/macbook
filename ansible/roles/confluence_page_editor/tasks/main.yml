@@ -5,7 +5,7 @@
 # Instead, we are using the page_id as a unique identifier
 
 - name: Microsites | Update confluence page with deploy versions
-  import_tasks: deployment_versions_microsites.yml
+  import_tasks: deployment_versions.yml
   when: page_id == 24546611
 
 - name: web stag | Update confluence page
