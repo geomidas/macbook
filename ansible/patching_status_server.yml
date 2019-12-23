@@ -1,0 +1,5 @@
+---
+
+- hosts: localhost
+  roles:
+    - patching_status_server
