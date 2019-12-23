@@ -1,0 +1,22 @@
+---
+
+- hosts:
+    - web_stag
+  vars:
+    page_id: 24548831
+    page_name: Available patches - web dev,stag
+    play_dir: /tmp/ansible/confluence/available_packages
+    page_dir: "{{play_dir}}/web_dev"
+  roles:
+    - confluence_page_editor
+
+- hosts:
+    - web_prod
+  vars:
+    page_id: 24547541
+    page_name: Available patches - web prod
+    play_dir: /tmp/ansible/confluence/available_packages
+    page_dir: "{{play_dir}}/web_prod"
+  roles:
+    - confluence_page_editor
+
