@@ -1,0 +1,14 @@
+---
+# This playbook installs python2
+# This resolves the following ansible error:
+#fatal: [ota-cache3-sc]: FAILED! => {"changed": false, "module_stderr": "Shared connection to 212.147.154.68 closed.\r\n", "module_stdout": "/bin/bash: /usr/bin/python: No such file or directory\r\n", "msg": "The module failed to execute correctly, you probably need to set the interpreter.\nSee stdout/stderr for the exact error", "rc": 127}
+
+- hosts: 
+    - machine1
+    - machine2
+  become: yes
+  gather_facts: no
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python
+      
