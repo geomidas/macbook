@@ -1,0 +1,17 @@
+---
+
+- hosts: localhost
+  gather_facts: false
+  vars:
+    slack_user: Maintenance robot 
+    slack_token: xxx
+    slack_emoji: ':robot_face:'
+    slack_channel: '#test'
+  tasks:
+    - name: slack | Notify people
+      slack:
+        msg: '_Testing posting_ *bold* slack message, from *{{ inventory_hostname }}*'
+        token: "{{ slack_token }}"
+        channel: "{{ slack_channel }}"
+        username: "{{ slack_user }}"
+        icon_emoji: "{{ slack_emoji }}"
