@@ -1,0 +1,4 @@
+---
+
+play_dir: /tmp/ansible/patching_status
+page: "{{page_dir}}/index.html"

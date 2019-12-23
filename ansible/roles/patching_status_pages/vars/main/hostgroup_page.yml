@@ -1,0 +1,50 @@
+---
+
+html_header: |
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Patching status</title>
+      <link rel="stylesheet" href="../assets/style.css" type="text/css">
+      <script type="text/javascript" src="../assets/sort.js"></script>
+    </head>
+    <body>
+      <header>
+        <a class="logo" href="/">Patching status</a>
+        <a class="logo" href=".">{{ page_name }}</a>
+        <div class="topnav-right">
+          <a href="http://confluence.cartrawler.com/display/IPD/How+to+patch+a+linux+machine" class="button confluence-button" target="_blank">How to patch</a>
+          <a href="https://github.cartrawler.com/cartrawler/sysadmin/blob/master/ansible/patching_status_pages.yml" class="button github-button" target="_blank">view on GitHub</a>
+        </div>
+      </header>    
+      <main>
+        <br><br><br>
+        <section class="container">
+          <table id="patchingstatus">
+            <thead>
+
+html_table_title: |
+  <!--Table title-->
+              <tr>
+                <th onclick="w3.sortHTML('#patchingstatus', '.item', 'td:nth-child(1)')"> Server </th>
+                <th onclick="w3.sortHTML('#patchingstatus', '.item', 'td:nth-child(2)')"> OS </th>
+                <th onclick="w3.sortHTML('#patchingstatus', '.item', 'td:nth-child(3)')"> Patches </th>
+                <th onclick="w3.sortHTML('#patchingstatus', '.item', 'td:nth-child(4)')"> Urgent </th>
+                <th onclick="w3.sortHTML('#patchingstatus', '.item', 'td:nth-child(5)')"> Risky </th>
+                <th onclick="w3.sortHTML('#patchingstatus', '.item', 'td:nth-child(6)')"> Kernel patch </th>
+              </tr>
+            </thead>
+            <!-- Table body begins here -->
+            <tbody>
+
+html_footer: |
+  <!--Footer-->
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </body>
+  </html>
