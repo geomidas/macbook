@@ -51,22 +51,6 @@
     - patching_status_pages
 
 - hosts:
-    - gt_dev
-  vars:
-    page_name: gt dev
-    page_dir: "{{play_dir}}/gt_dev"
-  roles:
-    - patching_status_pages
-
-- hosts:
-    - gt_prod
-  vars:
-    page_name: gt prod
-    page_dir: "{{play_dir}}/gt_prod"
-  roles:
-    - patching_status_pages
-
-- hosts:
     - office
   vars:
     page_name: office
