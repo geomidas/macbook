@@ -1,0 +1,10 @@
+---
+# Playbook that patches systems or groups of systems.
+# Non user-interactive. Designed to be run unattended.
+# Example crontab: 00 06 * * 1-5 /usr/local/bin/ansible-playbook ~/repos/macbook/ansible/patch.yml --extra-vars 'target=app_dev,app_stag' >> /var/log/ansible/patch.log
+
+- hosts: "{{ target }}"     # Overwrite "target" when executing the playbook, using -e | --extra-vars
+  any_errors_fatal: true    # Stops execution in case of any failure
+  serial: 1                 # This playbook is designed to patch servers one by one
+  roles:
+    - patch_fast
