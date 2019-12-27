@@ -1,0 +1,11 @@
+---
+
+- import_tasks: 1.pre-patch.yml
+- import_tasks: 2.pre-patch_ota.yml
+  when: ( 'app' in group_names )
+- import_tasks: 3.patching_tasks.yml
+- import_tasks: 4.post-patch.yml
+- import_tasks: 5.post-patch_ota.yml
+  when: ( 'app' in group_names )
+  notify: 
+    - Jira comment

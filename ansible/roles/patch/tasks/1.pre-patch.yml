@@ -1,0 +1,32 @@
+---
+
+- name: apt | Updating package list
+  become: true
+  apt:
+    update_cache: true
+    force_apt_get: true
+    cache_valid_time: 3600
+
+- name: apt | Count the amount of packages to be installed. Exit if 0
+  shell: bash -c 'sum=$(apt list --upgradable 2>/dev/null | wc -l) && ((sum--)) && echo $sum'
+  register: patches_sum
+  changed_when: false
+  
+- meta: end_play
+  when: 
+    - patches_sum.stdout == "0"
+
+- name: slack | Notify sysadmins
+  slack:
+    msg: '_Installing *{{ patches_sum.stdout }}* patches on *{{ inventory_hostname }}*_'
+    token: "{{ slack_token }}"
+    channel: "{{ slack_channel }}"
+    username: "{{ slack_user }}"
+    icon_emoji: "{{ slack_emoji }}"
+  delegate_to: localhost
+
+- name: Check if there's a linux kernel update
+  shell: apt list --upgradable | grep linux-image 
+  register: kernelup
+  changed_when: false
+  failed_when: false

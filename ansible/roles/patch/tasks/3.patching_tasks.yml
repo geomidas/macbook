@@ -1,0 +1,17 @@
+---
+
+- name: Patching
+  become: true
+  apt:
+    name: "*"
+    state: latest
+    autoclean: yes    # cleans the local repository of retrieved package files that can no longer be downloaded
+    autoremove: yes   # remove unused dependency packages for all module states except build-dep
+    force_apt_get: true
+  register: packages
+
+- name: Print patch install output
+  debug:
+    msg: "{{ packages.stdout_lines }}"
+  when: 
+    - packages.changed

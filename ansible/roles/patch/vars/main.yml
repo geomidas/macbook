@@ -1,0 +1,13 @@
+---
+
+target_host_ssh_port: '{{ ansible_port }}'  # Setting a local var with the ssh port of the target host. Used when waiting to establish an ssh connection after a reboot
+
+# --------  Credentials  ----------
+slack_user: System patching
+slack_token: ''
+slack_emoji: ':hammer_and_wrench:'
+slack_channel: '#system-maintenance'
+
+# ---------  Var init  ------------
+kernelup: null                              # initializing var that keeps the kernel update status
+patches_sum: 0

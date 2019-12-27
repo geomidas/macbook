@@ -1,0 +1,8 @@
+---
+
+# Set some default vars for testing or when a user misses specifying these
+
+# Jira issue to be updated after the patch playbook runs
+jira_issue: ''
+# Default target for patching. The user has to specify the target systems to be patched, so the target var is meant to be overwritten, usually by --extra-vars
+target: ''
