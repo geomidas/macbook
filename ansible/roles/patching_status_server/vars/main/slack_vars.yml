@@ -1,0 +1,6 @@
+---
+
+slack_token: ''
+slack_channel: '#test'
+slack_emoji: ':hammer_and_wrench:'
+slack_user: System maintenance

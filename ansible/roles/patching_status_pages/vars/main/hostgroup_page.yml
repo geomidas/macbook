@@ -16,7 +16,7 @@ html_header: |
         <a class="logo" href="/">Patching status</a>
         <a class="logo" href=".">{{ page_name }}</a>
         <div class="topnav-right">
-          <a href="http://confluence.cartrawler.com/display/IPD/How+to+patch+a+linux+machine" class="button confluence-button" target="_blank">How to patch</a>
+          <a href="." class="button confluence-button" target="_blank">How to patch</a>
           <a href="https://github.cartrawler.com/cartrawler/sysadmin/blob/master/ansible/patching_status_pages.yml" class="button github-button" target="_blank">view on GitHub</a>
         </div>
       </header>    

@@ -1,0 +1,23 @@
+---
+
+- name: Create index table content out of the existing dir structure
+  shell: for dir in $( ls "{{play_dir}}" | grep -v 'index.html\|main.go\|assets\|Dockerfile' ) ; do echo -e "            <tr><td><a href=http://ansible.cartrawler.com/${dir}>${dir}</a></td></tr>\n" ; done
+  register: index_table_content
+
+- template:
+    src: index.html
+    dest: /tmp/ansible/patching_status/index.html
+
+- name: Create file share golang object
+  shell: for dir in $( ls "{{play_dir}}" | grep -v 'index.html\|main.go\|assets\|Dockerfile' ) ; do echo -e "\tfs${dir} := http.FileServer(http.Dir(\"${dir}\"))\n\tmux.Handle(\"/${dir}/\", http.StripPrefix(\"/${dir}/\", fs${dir}))\n\n" ; done
+  register: go_fs_content
+
+- template:
+    src: main.go.j2
+    dest: "{{play_dir}}/main.go"
+
+- copy:
+    src: assets
+    dest: "{{play_dir}}/"
+
+- import_tasks: docker.yml
