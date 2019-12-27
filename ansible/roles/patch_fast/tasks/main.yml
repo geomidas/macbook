@@ -1,0 +1,23 @@
+---
+
+# This role does not reboot a server after patching
+
+- name: Patching
+  become: true
+  apt:
+    name: "*"
+    state: latest
+    autoclean: yes    # cleans the local repository of retrieved package files that can no longer be downloaded
+    autoremove: yes   # remove unused dependency packages for all module states except build-dep
+    update_cache: yes
+    force_apt_get: yes    
+  tags:
+    - patch_fast
+
+- name: Patching
+  become: true
+  apt:
+    upgrade: dist
+    update_cache: yes
+  tags:
+    - patch_fast
