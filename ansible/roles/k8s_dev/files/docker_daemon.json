@@ -1,0 +1,6 @@
+{
+    "insecure-registries": [
+        "nexus.geomidas.com:18443",
+        "nexus.geomidas.com:18444"
+    ]
+}

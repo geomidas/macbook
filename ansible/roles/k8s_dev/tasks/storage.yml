@@ -1,0 +1,68 @@
+---
+
+- name: Set fstab disk 1
+  become: true
+  lineinfile:
+    line: /dev/sdb1 /kubestorage1 ext4 defaults 0 0
+    path: /etc/fstab
+
+- name: Set fstab disk 2
+  become: true
+  lineinfile:
+    line: /dev/sdc2 /kubestorage2 ext4 defaults 0 0
+    path: /etc/fstab
+
+- name: Install nfs
+  become: true
+  apt:
+    name: nfs-kernel-server
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  register: nfs_install
+
+- name: Set exports file
+  become: true
+  template:
+    src: worker1_nfs_exports
+    dest: /etc/exports
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Set nfs dir1 permissions
+  become: true
+  file:
+    path: /kubestorage1
+    owner: nobody
+    group: nogroup
+    mode: 0755
+
+- name: Set nfs dir2 permissions
+  become: true
+  file:
+    path: /kubestorage2
+    owner: nobody
+    group: nogroup
+    mode: 0755
+
+- name: Update the nfs table
+  become: true
+  shell: exportfs -ra
+  when: nfs_install.changed
+
+- name: Find nfs listening port
+  become: true
+  shell: rpcinfo -p | grep nfs | awk '{print $4}' | sort -u
+  register: nfs_port
+  when: nfs_install.changed
+
+- name: Open the nfs port
+  become: true
+  shell: ufw allow {{nfs_port.stdout}}
+  register: firewall
+  when: nfs_install.changed
+
+- debug:
+    msg: "{{ firewall.stdout_lines }}"
+  when: nfs_install.changed

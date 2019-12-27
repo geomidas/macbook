@@ -1,0 +1,9 @@
+---
+
+- name: Docker disk clean up, at midnight, on Sundays
+  become: true
+  job: docker system prune -af > /dev/null 2>&1
+  hour: 0
+  minute: 0
+  weekday: 0
+  cron_file: "weekly_docker_disk_clean_up"

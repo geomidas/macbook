@@ -1,0 +1,15 @@
+---
+
+sysowner: Georgios Keramidas
+
+rancherlb_fqdn: harancher.geomidas.com
+ssl_pub_key: /etc/ssl/private/geomidas/harancher.pem
+ssl_priv_key: /etc/ssl/private/geomidas/harancher.key
+rancherlb_IP: 192.168.2.99
+
+master1_IP: 192.168.2.100
+master2_IP: 192.168.2.100
+master3_IP: 192.168.2.101
+
+# Storage
+nfs_subnet: 192.168.2.0/24

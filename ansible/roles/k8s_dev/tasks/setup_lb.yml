@@ -1,0 +1,61 @@
+---
+
+- name: apt | package installs
+  become: true
+  apt:
+    name: nginx
+    state: present
+
+- name: ssl | Set pub key
+  become: true
+  copy:
+    src: ssl_pub.key
+    dest: "{{ ssl_pub_key }}"
+    mode: 0400
+    owner: root
+    group: root
+  notify: 
+    - restart nginx
+
+- name: ssl | Set priv key
+  become: true
+  copy:
+    src: ssl_priv.key
+    dest: "{{ ssl_priv_key }}"
+    mode: 0400
+    owner: root
+    group: root
+  notify: 
+    - restart nginx
+
+- name: nginx | Place config file
+  become: true
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify: 
+    - restart nginx
+
+- name: nginx | Place config file for rancher
+  become: true
+  template:
+    src: nginx_rancher.conf
+    dest: /etc/nginx/conf.d/rancher.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify: 
+    - restart nginx
+
+- name: nginx | Testing nginx configuration
+  become: true
+  shell: nginx -t
+  register: nginx_test
+  changed_when: "nginx_test.rc != 0"
+
+- name: nginx | Result
+  debug:
+    msg: "{{ nginx_test.stderr_lines }}"
