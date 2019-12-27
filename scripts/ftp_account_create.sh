@@ -6,7 +6,7 @@
 #               Expects username (and optionally password) as arguments
 #
 #               This script can be remotely executed by a sudoer
-#               Example command: ssh -t ftps.cartrawler.com 'sudo /root/create-ftps-account.bash username'
+#               Example command: ssh -t ftpserver 'sudo /root/ftp_account_create.sh username'
 #
 # <--- George Keramidas ------------------------------------------------------->
 
@@ -19,9 +19,9 @@ fi
 if [ "$#" -lt 1 ]; then
     echo 'Error: Illegal number of parameters.'
     echo 'Usage:'
-    echo '/root/create-ftps-account.bash username'
+    echo '/root/ftp_account_create.sh username'
     echo 'or'
-    echo '/root/create-ftps-account.bash username password'
+    echo '/root/ftp_account_create.sh username password'
     exit
 fi
 # Username and Password were provided. Proceed creating the account
