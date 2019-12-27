@@ -6,7 +6,7 @@
 #               Expects username and password as arguments
 #
 #               This script can be remotely executed by a sudoer
-#               Example command: ssh -t prod-sftp-server.cartrawler.com 'sudo /root/create-ftp-account.bash username password'
+#               Example command: ssh -t prod-sftp-server 'sudo /root/ftp_account_create.sh username password'
 #
 # <--- George Keramidas ------------------------------------------------------->
 
@@ -33,7 +33,7 @@ if [[ "$username" =~ [^a-zA-Z0-9] ]] ; then
     exit
 fi
 if [[ -z "$password" ]] ; then
-    password=$( </dev/urandom tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' | head -c 24  ; echo )
+    password=$( </dev/urandom tr -dc 'A-Za-z0-9!#$%*+_-=?@' | head -c 24  ; echo )
 fi
 echo
 echo "Username: $username"

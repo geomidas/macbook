@@ -1,39 +1,39 @@
 ---
-
-- name: apt | install packages for koios db access
-  become: true
-  apt:
-    name: 
-      - unixodbc 
-      - unixodbc-dev 
-      - freetds-dev 
-      - freetds-bin 
-      - tdsodbc
-    state: present
-
-- name: koios | Config file
-  become: true
-  copy:
-    src: odbc.ini
-    dest: /etc/odbc.ini
-    mode: 0644
-    owner: root
-    group: root
-    
-- name: koios | Config file 2
-  become: true
-  copy:
-    src: odbcinst.ini
-    dest: /etc/odbcinst.ini
-    mode: 0644
-    owner: root
-    group: root
+# In case the ftp server needs access to a db
+#- name: apt | install packages for db access
+#  become: true
+#  apt:
+#    name: 
+#      - unixodbc 
+#      - unixodbc-dev 
+#      - freetds-dev 
+#      - freetds-bin 
+#      - tdsodbc
+#    state: present
+#
+#- name: db | Config file
+#  become: true
+#  copy:
+#    src: odbc.ini
+#    dest: /etc/odbc.ini
+#    mode: 0644
+#    owner: root
+#    group: root
+#    
+#- name: koios | Config file 2
+#  become: true
+#  copy:
+#    src: odbcinst.ini
+#    dest: /etc/odbcinst.ini
+#    mode: 0644
+#    owner: root
+#    group: root
   
 - name: ftp | Copy script that creates new accounts
   become: true
   copy:
-    src: create-ftp-account.bash
-    dest: /root/create-ftp-account.bash
+    src: ftp_account_create.sh
+    dest: /root/ftp_account_create.sh
     mode: 0644
     owner: root
     group: root
@@ -41,17 +41,17 @@
 - name: ftp | Copy script that deletes accounts
   become: true
   copy:
-    src: delete-ftp-account.bash
-    dest: /root/delete-ftp-account.bash
+    src: ftp_account_delete.sh
+    dest: /root/ftp_account_delete.sh
     mode: 0644
     owner: root
     group: root
 
-- name: sql | Copy file with sql command that fetches new accounts
-  become: true
-  copy:
-    src: get_accounts.sql
-    dest: /root/get_accounts.sql
-    mode: 0644
-    owner: root
-    group: root
+#- name: sql | Copy file with sql command that fetches new accounts
+#  become: true
+#  copy:
+#    src: get_accounts.sql
+#    dest: /root/get_accounts.sql
+#    mode: 0644
+#    owner: root
+#    group: root

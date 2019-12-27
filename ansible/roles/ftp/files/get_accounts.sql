@@ -1,1 +1,0 @@
-select top 30 [user_id],[password] from onlineratesheetconfig with (readuncommitted) order by car_agent_id desc
