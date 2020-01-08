@@ -51,6 +51,7 @@ Disable the welcome message when opening a cli
                zsh-autosuggestions \
                shellcheck \
                findutils \
+               fzf \
                tldr \
                watch \
                httpie \
