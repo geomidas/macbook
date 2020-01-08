@@ -78,6 +78,9 @@ function ask() {
     esac
 }
 alias kube="${HOME}/repos/sysadmin/scripts/kubedashboard/kubedashboard.sh"
+source /usr/local/share/kube-ps1.sh
+autoload -U +X bashcompinit && bashcompinit
+source /usr/local/etc/bash_completion.d/az
 
 #----- Other custom stuff ---------------------------------------------------------#
 # export TERM="xterm-256color"
