@@ -62,6 +62,7 @@ Disable the welcome message when opening a cli
                htop \
                vim \
                git \
+               git-crypt \
                docker \
                kubectl \
                gcc
