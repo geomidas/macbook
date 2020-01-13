@@ -112,6 +112,11 @@ Disable the welcome message when opening a cli
   ```
   brew install awscli
   ```
+  
+* [Azure cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest)  
+  ```
+  brew install azure-cli
+  ```
 
 * [Keepass](https://www.keepassx.org/) (for encrypting passwords and other info)
   ```
