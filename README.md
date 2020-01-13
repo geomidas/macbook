@@ -46,8 +46,7 @@ Disable the welcome message when opening a cli
   
 * Various other tools
   ``` 
-  brew install python \
-               zsh-syntax-highlighting \
+  brew install zsh-syntax-highlighting \
                zsh-autosuggestions \
                shellcheck \
                findutils \
@@ -73,6 +72,26 @@ Disable the welcome message when opening a cli
                     gimp
   ```
   
+* Python
+  ```
+  brew install python
+  curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  sudo python get-pip.py
+  ```
+  
+* [Go](https://golang.org/)
+  ```
+  export GOPATH="${HOME}/.go"
+  export GOROOT="$(brew --prefix golang)/libexec"
+  export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+  test -d "${GOPATH}" || mkdir "${GOPATH}"
+  test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+  brew install go
+  
+  go get golang.org/x/tools/cmd/godoc
+  go get golang.org/x/lint/golint
+  ```
+  
 * [AdoptOpenJDK](https://adoptopenjdk.net/)
   ```
   brew tap adoptopenjdk/openjdk
@@ -88,19 +107,6 @@ Disable the welcome message when opening a cli
     brew install caskroom/cask/brew-cask
     brew cask install netbeans
     ```
-    
-* [Go](https://golang.org/)
-  ```
-  export GOPATH="${HOME}/.go"
-  export GOROOT="$(brew --prefix golang)/libexec"
-  export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-  test -d "${GOPATH}" || mkdir "${GOPATH}"
-  test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
-  brew install go
-  
-  go get golang.org/x/tools/cmd/godoc
-  go get golang.org/x/lint/golint
-  ```
 
 * [Ansible](https://docs.ansible.com/)
   ```
