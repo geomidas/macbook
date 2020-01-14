@@ -68,6 +68,7 @@ autoload -U +X bashcompinit && bashcompinit
 source /usr/local/etc/bash_completion.d/az
 
 #----- Aliases --------------------------------------------------------------#
+alias k='kubectl'
 alias vscode='open -a "Visual Studio Code" .'
 # Shows 10 biggest files
 alias lf='du -hsx * | sort -rh | head -10'
