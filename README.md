@@ -63,7 +63,6 @@ Disable the welcome message when opening a cli
                git \
                git-crypt \
                docker \
-               kubectl \
                gcc
 
   brew cask install visual-studio-code \
@@ -97,6 +96,7 @@ Disable the welcome message when opening a cli
   brew tap adoptopenjdk/openjdk
   brew cask install adoptopenjdk
   ```
+
 * Choose an IDE:
   * [intellij](https://www.jetbrains.com/idea/)
     ```
@@ -107,6 +107,12 @@ Disable the welcome message when opening a cli
     brew install caskroom/cask/brew-cask
     brew cask install netbeans
     ```
+
+* Kubernetes client
+  ```
+  brew install kubectl
+  brew install kubectx
+  ```
 
 * [Ansible](https://docs.ansible.com/)
   ```
