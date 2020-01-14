@@ -1,7 +1,7 @@
 #source ~/.fonts/*.sh
 #----- ZSH configs ----------------------------------------------------------#
 export ZSH="/Users/gkeramidas/.oh-my-zsh"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_FOREGROUND='blue'
 DEFAULT_FOREGROUND2='cyan'
 POWERLEVEL9K_STATUS_VERBOSE=true
@@ -44,8 +44,13 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Load custom plugins
+for item in $(ls -1 ${HOME}/.profile.d/*.plugin.zsh); do
+  [ -e "${item}" ] && source "${item}"
+done
+
 # aws
-plugins=( history zsh-syntax-highlighting zsh-completions zsh-autosuggestions git golang jira docker jsontools httpie web-search tmux tmuxinator osx )
+plugins=( helm history zsh-navigation-tools zsh-syntax-highlighting zsh-completions zsh-autosuggestions git golang jira docker jsontools httpie web-search tmux tmuxinator osx ansible colored-man-pages colorize nmap )
 source $ZSH/oh-my-zsh.sh
 # ZSH syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -57,8 +62,13 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='mvim'
 fi
+export VAULT_ADDR=https://vault.tradeix.co.uk
+source /usr/local/share/kube-ps1.sh
+autoload -U +X bashcompinit && bashcompinit
+source /usr/local/etc/bash_completion.d/az
 
 #----- Aliases --------------------------------------------------------------#
+alias vscode='open -a "Visual Studio Code" .'
 # Shows 10 biggest files
 alias lf='du -hsx * | sort -rh | head -10'
 # List and sort dirs by size:
@@ -78,10 +88,6 @@ function ask() {
     esac
 }
 alias kube="${HOME}/repos/sysadmin/scripts/kubedashboard/kubedashboard.sh"
-source /usr/local/share/kube-ps1.sh
-autoload -U +X bashcompinit && bashcompinit
-source /usr/local/etc/bash_completion.d/az
-
 #----- Other custom stuff ---------------------------------------------------------#
 # export TERM="xterm-256color"
 # ssh-add $pem
