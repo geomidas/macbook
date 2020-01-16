@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # <--- Variables -------------------------------------------------------------->
 podname='chrome'
 outfile='./chrome.log'
