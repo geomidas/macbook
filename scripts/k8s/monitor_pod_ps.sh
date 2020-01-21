@@ -1,14 +1,17 @@
 #!/bin/env bash
 
+app=chrome
+command='ps | grep chrome | grep -v driver'
+
 while true
 do
-    pods=$(kubectl get pods | grep ^chrome)
+    pods=$(kubectl get pods | grep "$app")
     for pod in $(echo $pods | awk '{print $1}')
     do
         if ! [ -z $pod ]
         then
             echo $pods
-            kubectl exec $pod -c browser ps
+            kubectl exec $pod -c browser -- bash -c "$command"
         fi
     done
     sleep 1
