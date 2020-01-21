@@ -10,5 +10,7 @@ do
             echo $pods
             kubectl exec $pod -c browser ps
         fi
-    done ; sleep 2 ; clear ;
+    done
+    sleep 1
+    clear
 done
