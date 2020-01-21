@@ -1,7 +1,7 @@
 #!/bin/env bash
 
 app=chrome
-command='ps | grep chrome | grep -v driver'
+command="ps | grep $app | grep -v driver"
 
 while true
 do
