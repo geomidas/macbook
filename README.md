@@ -60,6 +60,7 @@ Disable the welcome message when opening a cli
                nmap \
                htop \
                vim \
+               gpg \
                git \
                git-crypt \
                docker \
