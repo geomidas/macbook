@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/bash
 
 app=chrome
 command="ps | grep $app | grep -v driver"
