@@ -113,6 +113,7 @@ Disable the welcome message when opening a cli
   ```
   brew install kubectl
   brew install kubectx
+  brew install stern    # monitor multiple kubernetes logs
   ```
 
 * [Ansible](https://docs.ansible.com/)
