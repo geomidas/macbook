@@ -123,6 +123,11 @@ Disable the welcome message when opening a cli
   pip install ansible-playbook-grapher
   ```
 
+* [Terraform]
+  ```
+  brew install terraform terragrunt
+  ```
+
 * [AWS cli](https://docs.aws.amazon.com/cli/index.html)
   ```
   brew install awscli
