@@ -50,6 +50,7 @@ Disable the welcome message when opening a cli
                zsh-autosuggestions \
                shellcheck \
                findutils \
+               coreutils \
                fzf \
                tldr \
                watch \
