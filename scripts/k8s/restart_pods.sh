@@ -9,7 +9,7 @@ for pod in $(echo $pods) ; do
 	for pla in $(echo $platforms) ; do
 		echo "### Stopping $pod on $pla ###"
 		kubectl -n "${pla}" scale deployment "${pod}" --replicas=0
-		sleep 2
+		sleep 1
 		echo "### Starting $pod on $pla ###"
 		kubectl -n "${pla}" scale deployment "${pod}" --replicas=1
 	done
