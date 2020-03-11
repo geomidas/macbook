@@ -53,6 +53,7 @@ Disable the welcome message when opening a cli
                coreutils \
                fzf \
                tldr \
+               wget \
                watch \
                httpie \
                telnet \
