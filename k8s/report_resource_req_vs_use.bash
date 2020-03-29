@@ -6,6 +6,7 @@
 #	 - Stores the table in a CSV file
 
 # <------------- Vars -------------------------------------------------------->
+# Where the report will be stored
 report_path="$HOME"
 # Colors
 end="\033[0m"
