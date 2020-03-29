@@ -33,7 +33,7 @@ function init_files() {
 		fi
 		touch "${file}"
 	done
-	}
+}
 
 function fetch_pod_requests() {
 	echo
@@ -46,7 +46,11 @@ function fetch_pod_requests() {
 		grep -v ',,' | grep -v 'kube-system' | sort -t',' -k4 -n -u >> ${pod_requests}
 	# debugging info
 	cat ${pod_requests}
-	}
+}
+
+function generate_report_title() {
+	echo "Pod Resource Requests vs. Use on ${cluster_name}" >> "${report_final}"
+}
 
 function generate_report() {
 	echo
@@ -91,35 +95,36 @@ function print_report() {
 
 function cleanup() {
 	rm -f "${pod_requests}"
-	}
+}
 
 function red {
 	echo -e "${red}${1}${end}"
-	}
+}
 
 function green {
 	echo -e "${green}${1}${end}"
-	}
+}
 
 function yellow {
 	echo -e "${yellow}${1}${end}"
-	}
+}
 
 function blue {
   echo -e "${blue}${1}${end}"
-	}
+}
 
 function purple {
 	echo -e "${purple}${1}${end}"
-	}
+}
 
 function lightblue {
 	echo -e "${lightblue}${1}${end}"
-	}
+}
 
 # <------------- Main ------------------------------------------------------->
 init_files
 fetch_pod_requests
+generate_report_title
 generate_report
 print_report
 cleanup
