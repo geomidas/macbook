@@ -4,6 +4,10 @@
 #	 - Scans Kubernetes cluster for pods with resource requests
 #	 - Gets pod resource use
 #	 - Stores the table in a CSV file
+#
+#	Requirements:
+#	 - working kubectl
+#	 - jq
 
 # <------------- Vars -------------------------------------------------------->
 # Where the report will be stored
