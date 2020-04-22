@@ -111,6 +111,12 @@ Disable the welcome message when opening a cli
     brew cask install netbeans
     ```
 
+* Postgres DB client 
+  * [dbeaver](https://dbeaver.io/)
+    ```
+    brew cask install dbeaver-community
+    ```
+
 * Kubernetes client
   ```
   brew install kubectl
