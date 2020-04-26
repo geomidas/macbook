@@ -96,8 +96,7 @@ Disable the welcome message when opening a cli
   
 * [AdoptOpenJDK](https://adoptopenjdk.net/)
   ```
-  brew tap adoptopenjdk/openjdk
-  brew cask install adoptopenjdk
+  brew install openjdk
   ```
 
 * Choose an IDE:
@@ -121,7 +120,8 @@ Disable the welcome message when opening a cli
   ```
   brew install kubectl
   brew install kubectx
-  brew install stern    # monitor multiple kubernetes logs
+  brew install kube-ps1  # Control Kubernetes context and namespace
+  brew install stern     # monitor multiple kubernetes logs
   ```
 
 * [Ansible](https://docs.ansible.com/)
