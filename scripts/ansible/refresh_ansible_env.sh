@@ -3,7 +3,7 @@ set -e
 
 # <--- Info ------------------------------------------------------------------>
 #
-#    Executed by the ansible user on ansible.cartrawler.com
+#    Executed by the ansible user on the ansible node
 #
 #    - Updates local devops repo. 
 #    - Syncs ansible files under /etc/ansible. 
