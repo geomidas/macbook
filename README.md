@@ -54,6 +54,7 @@ Disable the welcome message when opening a cli
                fzf \
                tldr \
                wget \
+               tree \
                watch \
                httpie \
                telnet \
