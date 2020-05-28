@@ -132,7 +132,7 @@ Disable the welcome message when opening a cli
   pip install ansible-playbook-grapher
   ```
 
-* [Terraform]
+* [Terraform](https://www.terraform.io/)
   ```
   brew install terraform terragrunt
   ```
