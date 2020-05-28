@@ -75,7 +75,7 @@ Disable the welcome message when opening a cli
                     gimp
   ```
   
-* Python
+* [Python](https://www.python.org/)
   ```
   brew install python
   curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py
