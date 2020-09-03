@@ -51,9 +51,11 @@ def recreate_ssh_conf():
 
     # Append ssh configs that apply to all hosts
     f = open(outfile, "a")
-    f.write("Host *\n" \
-            "  ForwardX11 no\n" \
-            "  StrictHostKeyChecking no\n\n")
+    f.write("Host *\n"\
+            "  ForwardX11 no\n"\
+            "  LogLevel ERROR\n"\
+            "  StrictHostKeyChecking no\n"\
+            "  UserKnownHostsFile=/dev/null\n\n")
     f.close()
 
 
@@ -122,7 +124,7 @@ if __name__ == "__main__":
     try:
         ansible_hosts_file
     except NameError:
-        ansible_hosts_file = home + "/lu/ansible-with-inventory/hosts.ini"
+        ansible_hosts_file = home + "/ansible/hosts.ini"
         #ansible_hosts_file = home + "/lu/onboarding_project/ansible/inventory/hosts.ini"
         #ansible_hosts_file2 = home + "/lu/onboarding_project/ansible/inventory/prod.ini"
         #ansible_hosts_file3 = home + "/lu/onboarding_project/ansible/inventory/test.ini"
