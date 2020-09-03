@@ -1,75 +1,64 @@
-#source ~/.fonts/*.sh
-#----- ZSH configs ----------------------------------------------------------#
-export ZSH="/Users/gkeramidas/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-DEFAULT_FOREGROUND='blue'
-DEFAULT_FOREGROUND2='cyan'
-POWERLEVEL9K_STATUS_VERBOSE=true
-POWERLEVEL9K_STATUS_CROSS=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-#POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=false
-POWERLEVEL9K_DIR_HOME_BACKGROUND="$DEFAULT_FOREGROUND2"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="$DEFAULT_FOREGROUND2"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="$DEFAULT_FOREGROUND2"
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭─"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰\uF460 "
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="$DEFAULT_FOREGROUND"
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="$DEFAULT_BACKGROUND"
-POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="$DEFAULT_FOREGROUND2"
-POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND="$DEFAULT_BACKGROUND"
-#POWERLEVEL9K_MODE='awesome-fontconfig'
-POWERLEVEL9K_MODE='nerdfont-complete'
-#POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR="\uE0B4"
-#POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR="%F{$(( $DEFAULT_BACKGROUND - 2 ))}|%f"
-#POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR="%F{$(( $DEFAULT_BACKGROUND - 2 ))}|%f"
-#POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR="\uE0B6"
-POWERLEVEL9K_TIME_BACKGROUND="$DEFAULT_FOREGROUND"
-POWERLEVEL9K_TIME_FOREGROUND='black'
-POWERLEVEL9K_OS_ICON_BACKGROUND="$DEFAULT_FOREGROUND"
-POWERLEVEL9K_OS_ICON_FOREGROUND='black'
-POWERLEVEL9K_ROOT_ICON='\uF490'
-POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND="$DEFAULT_FOREGROUND2"
-POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND='black'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND="black"
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND="$DEFAULT_FOREGROUND2"
-POWERLEVEL9K_EXECUTION_TIME_ICON="\u23F1"
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(icons_test)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator os_icon dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_jobs time)
-
-CASE_SENSITIVE="true"
-COMPLETION_WAITING_DOTS="true"
-HIST_STAMPS="yyyy-mm-dd"
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Load custom plugins
-for item in $(ls -1 ${HOME}/.profile.d/*.plugin.zsh); do
-  [ -e "${item}" ] && source "${item}"
-done
-
-# aws
-plugins=( helm history zsh-navigation-tools zsh-syntax-highlighting zsh-completions zsh-autosuggestions git golang jira docker jsontools httpie web-search tmux tmuxinator osx ansible colored-man-pages colorize nmap )
-source $ZSH/oh-my-zsh.sh
-# ZSH syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-#----- User configuration ----------------------------------------------------------#
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-export VAULT_ADDR=https://vault.tradeix.co.uk
-source /usr/local/share/kube-ps1.sh
-autoload -U +X bashcompinit && bashcompinit
-source /usr/local/etc/bash_completion.d/az
+
+# PATH
+export PATH="$HOME/.rvm/rubies/ruby-2.5.5/bin:$PATH"
+export PATH="$PATH:/Users/georgios/homebrew/bin"
+# Mysql Workbench
+export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS
+#Add MySQL (Homebrew-installed) to path
+export PATH="$PATH:/Users/georgios/homebrew/opt/mysql@5.6/bin"
+# Ansible - Python bins
+export PATH="$PATH:/Users/georgios/Library/Python/3.7/bin"
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#export PATH="$PATH:/Users/georgios/.gem/bin"
+#export PATH="$PATH:/Users/georgios/.rvm/bin"
+
+# FPATH
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
+
+# ZSH
+plugins=(fzf aws git aws-mfa history mysql-colorize history-substring-search zsh-navigation-tools zsh-syntax-highlighting zsh-completions ansible terraform bundler dotenv osx rsync ruby rake colored-man-pages colorize nmap zsh-interactive-cd)
+export ZSH="/Users/georgios/.oh-my-zsh"
+export HISTFILE=~/.zsh_history
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+setopt INC_APPEND_HISTORY
+export HISTTIMEFORMAT="[%F %T] "
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+ZSH_THEME="powerlevel10k/powerlevel10k"
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UPDATE_PROMPT=true
+
+source /Users/georgios/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+source /Users/georgios/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /Users/georgios/homebrew/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
+source /Users/georgios/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/georgios/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #----- Aliases --------------------------------------------------------------#
+alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox'
 alias k='kubectl'
-alias vscode='open -a "Visual Studio Code" .'
+alias mysqlg='mysql --pager=/Users/georgios/.bash/mysql-colorize/mycat'
+alias ll='ls -AlhG'
+alias pip='pip3'
+alias code='open -a "Visual Studio Code" .'
 # Shows 10 biggest files
 alias lf='du -hsx * | sort -rh | head -10'
 # List and sort dirs by size:
@@ -88,10 +77,17 @@ function ask() {
         *) return 1 ;;
     esac
 }
-alias kube="${HOME}/repos/sysadmin/scripts/kubedashboard/kubedashboard.sh"
-#----- Other custom stuff ---------------------------------------------------------#
-# export TERM="xterm-256color"
-# ssh-add $pem
-# Housekeeping
-#$HOME/repos/gkeramidas/scripts/housekeeping.sh
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+# Grep color
+#export GREP_OPTIONS='--color=always'
+#export GREP_COLOR='1;31;34'
+
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /Users/georgios/homebrew/bin/vault vault
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source ~/.learnupon_env
+alias grep="~/homebrew/bin/ggrep"
+
