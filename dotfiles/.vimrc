@@ -14,6 +14,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set term=xterm-256color
 
 if has('filetype')
   filetype indent plugin on
