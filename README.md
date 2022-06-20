@@ -33,7 +33,7 @@ Disable the welcome message when opening a cli
   ```
   brew install zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  upgrade_oh_my_zsh
+  omz update
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   # Switch zsh to p10k theme
   sed -i '' 's@^ZSH_THEME="robbyrussell"@ZSH_THEME="powerlevel10k/powerlevel10k"@' ~/.zshrc
@@ -50,9 +50,7 @@ Disable the welcome message when opening a cli
   
 * Various other tools
   ``` 
-  brew install zsh-syntax-highlighting \
-               zsh-autosuggestions \
-               shellcheck \
+  brew install              shellcheck \
                findutils \
                coreutils \
                fzf \
