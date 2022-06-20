@@ -151,13 +151,3 @@ Disable the welcome message when opening a cli
   brew install azure-cli
   ```
 
-* [Keepass](https://www.keepassx.org/) (for encrypting passwords and other info)
-  ```
-  brew cask install keepassx
-  ```
-
-* [Atom](https://atom.io/) text editor (Visual Studio Code alternative)
-  ```
-  brew cask install atom
-  ```
-  
