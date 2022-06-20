@@ -34,13 +34,17 @@ Disable the welcome message when opening a cli
   brew install zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   upgrade_oh_my_zsh
-  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  # Switch zsh to p10k theme
+  sed -i '' 's@^ZSH_THEME="robbyrussell"@ZSH_THEME="powerlevel10k/powerlevel10k"@' ~/.zshrc
+  cp .p10k ~/.p10k
+  git clone https://github.com/zsh-users/zsh-completions.git $ZSH_CUSTOM/plugins/zsh-completions
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-history-substring-search.git $ZSH_CUSTOM/plugins/zsh-history-substring-search
+  sed -i '' 's:^plugins=(.*:plugins=(git ansible terraform docker history colored-man-pages emoji zsh-completions zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search):g' ~/.zshrc
   brew tap homebrew/cask-fonts
-  brew cask install font-hack-nerd-font
+  brew install --cask font-hack-nerd-font
   ```
   Change font. In iterm2, go to Preferences > Profiles > Text > Change Font. Select 'Hack Nerd Font'
   
