@@ -1,5 +1,5 @@
 # My macbook setup
-Mainly used for Linux Sysadmin and DevOps. 
+Mainly used for SRE, DevOps, Linux Sysadmins.
 Homebrew, Bash, Python, Ansible, Docker, Kubernetes...
 
 ## Initial Setup
