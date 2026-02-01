@@ -1,0 +1,124 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$line_break\
+$time\
+$python\
+$terraform\
+$aws\
+$azure\
+$kubernetes\
+$directory\
+$git_branch\
+$git_status\
+$line_break\
+[║](fg:color_blue2)\
+$line_break\
+[╙─](fg:color_blue2)\
+$character"""
+
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#000000'
+color_bg1 = '#3c3836'
+color_bg3 = '#665c54'
+color_blue = '#635CC4'
+dark_blue = '#2C2958'
+color_blue2 = '#097E99'
+dark_blue2 = '#033844'
+color_blue3 = '#0a8caa'
+color_blue4 = '#0a97aa'
+color_aqua = '#089080'
+dark_aqua = '#023933'
+color_aqua2 = '#033933'
+color_green = '#008b34'
+color_purple = '#905CC4'
+dark_purple = '#39244E'
+color_pink = '#B45CC4'
+dark_pink = '#5A2E62'
+color_yellow = '#B49163'
+dark_yellow = '#50402C'
+color_red = '#d14c5a'
+color_orange = '#B34B4F'
+dark_orange = '#592527'
+
+[os]
+disabled = false
+style = "bg:color_blue2 fg:dark_blue2"
+
+[os.symbols]
+Ubuntu = " 󰕈 "
+Macos = "  "
+Linux = " 󰌽 "
+Debian = " 󰣚 "
+
+[directory]
+format = "[╟─](fg:color_blue2)[](fg:color_blue2)[   $path ](fg:dark_blue2 bg:color_blue2)[](fg:color_blue2)"
+truncation_length = 3
+truncation_symbol = ""
+
+[git_branch]
+format = '[─](fg:color_aqua)[ 󰊤  $branch ](bg:color_aqua fg:dark_aqua)'
+
+[git_status]
+conflicted = '🏳 '
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+up_to_date = ''
+untracked = '🤷 '
+stashed = '📦 '
+modified = '📝 '
+staged = '[++\($count\)](green)'
+renamed = '👅 '
+deleted = '🗑 '
+format = '[$all_status$ahead_behind](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+
+[aws]
+format = "[╟─](fg:color_orange)[   $profile ](fg:dark_orange bg:color_orange)[](fg:color_orange)\n"
+[aws.profile_aliases]
+'prod/dp-uc-platform-use1-dev/AWS_UCI_CloudSupport_L2_PS' = 'CloudSupport'
+
+[rust]
+format = '[╟─](fg:color_pink)[  ( $version) ](fg:dark_pink bg:color_pink)][](fg:color_pink)'
+
+[golang]
+format = '[╟─](fg:color_pink)[  ( $version) ](fg:dark_pink bg:color_pink)][](fg:color_pink)\n'
+
+[java]
+format = '[╟─](fg:color_pink)[  ( $version) ](fg:dark_pink bg:color_pink)[](bg:color_pink)\n'
+
+[python]
+format = "[╟─](fg:color_pink)[  ( $version) ](fg:dark_pink bg:color_pink)[](fg:color_pink)\n"
+
+[terraform]
+format = "[╟─](fg:color_purple)[ 󱁢 ( $workspace) ](fg:dark_purple bg:color_purple)[](fg:color_purple)\n"
+
+[docker_context]
+format = '[╟─](fg:color_blue)[ 󰡨 ( $context) ](fg:dark_blue bg:color_blue)][](fg:color_blue)'
+
+[kubernetes]
+disabled = false
+format = "[╟─](fg:color_blue)[ 󱃾  $context $namespace ](fg:dark_blue bg:color_blue)[](fg:color_blue)\n"
+
+[[kubernetes.contexts]]
+context_pattern = "arn.*cluster/(?P<cluster>[\\w-]+)"
+context_alias = "eks-$cluster"
+
+[time]
+disabled = false
+time_format = "%R"
+format = "[╓─](fg:color_yellow)[ 󰥔  $time ](fg:dark_yellow bg:color_yellow)[](fg:color_yellow)\n"
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[ ](fg:color_blue3)'
+error_symbol = '[ ](fg:color_yellow)'
+vimcmd_symbol = '[ ](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[ ](bold fg:color_purple)'
+vimcmd_replace_symbol = '[ ](bold fg:color_purple)'
+vimcmd_visual_symbol = '[ ](bold fg:color_yellow)'

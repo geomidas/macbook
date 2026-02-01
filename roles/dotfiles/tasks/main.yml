@@ -1,0 +1,25 @@
+---
+- name: Create the ~/.config directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config"
+    state: directory
+    mode: '0755'
+
+- name: Disable motd (message of the day)
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.hushlogin"
+    state: touch
+    mode: '0644'
+
+- name: Create symbolic links for dotfiles
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ ansible_user_dir }}/{{ item }}"
+    state: link
+    force: yes
+  loop:
+    - .zshrc
+    - .aliases
+    - .env
+    - .vimrc
+    - .config/starship.toml

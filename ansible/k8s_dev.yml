@@ -1,9 +1,0 @@
----
-
-- hosts: 
-    - ha_k8s_dev
-  serial: 1
-  roles:
-    #- common
-    - k8s_dev
-    #- monitoring

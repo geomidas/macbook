@@ -1,0 +1,50 @@
+---
+- name: Ensure Homebrew is installed
+  community.general.homebrew:
+    state: present
+
+- name: Install command line tools
+  community.general.homebrew:
+    name:
+      - starship
+      - git
+      - fzf
+      - tree
+      - tldr
+      - wget
+      - node
+      - watch
+      - kubectl
+      - kubectx
+      - helm
+      - shellcheck
+      - ansible
+      - terraform
+      - swiftlint
+      - swiftformat
+      - zsh-history-substring-search
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      - zsh-navigation-tools
+      - fzf-zsh-completion
+      - font-hack-nerd-font
+      - font-m+-nerd-font
+      - font-profont-nerd-font
+      - font-fira-code-nerd-font
+      - awscli
+      - azure-cli
+    state: present
+
+- name: Install GUI applications
+  community.general.homebrew_cask:
+    name:
+      - gcloud-cli
+      - iterm2
+      - google-chrome
+      - cursor
+      - cursor-cli
+      - the-unarchiver
+      - docker-desktop
+      - zoom
+    state: present
+    install_options: appdir=/Applications

@@ -1,0 +1,21 @@
+---
+- name: restart finder
+  ansible.builtin.command:
+    cmd: killall Finder
+  register: finder_restart
+  failed_when: finder_restart.rc != 0 and "No matching processes" not in finder_restart.stderr
+  changed_when: finder_restart.rc == 0
+
+- name: restart dock
+  ansible.builtin.command:
+    cmd: killall Dock
+  register: dock_restart
+  failed_when: dock_restart.rc != 0 and "No matching processes" not in dock_restart.stderr
+  changed_when: dock_restart.rc == 0
+
+- name: restart systemuiserver
+  ansible.builtin.command:
+    cmd: killall SystemUIServer
+  register: systemuiserver_restart
+  failed_when: systemuiserver_restart.rc != 0 and "No matching processes" not in systemuiserver_restart.stderr
+  changed_when: systemuiserver_restart.rc == 0
