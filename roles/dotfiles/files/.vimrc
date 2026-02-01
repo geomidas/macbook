@@ -6,4 +6,4 @@ set undofile
 set undodir=~/.vim/undodir
 set showmatch
 set wildmenu
-set scrollofff=10
+set scrolloff=10
