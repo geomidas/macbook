@@ -18,5 +18,9 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 
+# Home/End key bindings
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
 # Starship prompt
 eval "$(starship init zsh)"
