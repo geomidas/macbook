@@ -9,6 +9,7 @@
       - starship
       - git
       - fzf
+      - fzf-tab
       - tree
       - tldr
       - wget
@@ -26,7 +27,6 @@
       - zsh-autosuggestions
       - zsh-syntax-highlighting
       - zsh-navigation-tools
-      - fzf-zsh-completion
       - font-hack-nerd-font
       - font-m+-nerd-font
       - font-profont-nerd-font
@@ -35,16 +35,37 @@
       - azure-cli
     state: present
 
+- name: Check if iTerm2 is already installed
+  ansible.builtin.stat:
+    path: /Applications/iTerm.app
+  register: iterm2_app
+
+- name: Install iTerm2 via Homebrew if not present
+  community.general.homebrew_cask:
+    name: iterm2
+    state: present
+    install_options: appdir=/Applications
+  when: not iterm2_app.stat.exists
+
+- name: Check if Google Chrome is already installed
+  ansible.builtin.stat:
+    path: /Applications/Google Chrome.app
+  register: chrome_app
+
+- name: Install Google Chrome via Homebrew if not present
+  community.general.homebrew_cask:
+    name: google-chrome
+    state: present
+    install_options: appdir=/Applications
+  when: not chrome_app.stat.exists
+
 - name: Install GUI applications
   community.general.homebrew_cask:
     name:
       - gcloud-cli
-      - iterm2
-      - google-chrome
       - cursor
       - cursor-cli
       - the-unarchiver
       - docker-desktop
-      - zoom
     state: present
     install_options: appdir=/Applications
