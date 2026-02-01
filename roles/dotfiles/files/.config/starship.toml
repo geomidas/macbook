@@ -63,16 +63,16 @@ format = '[─](fg:color_aqua)[ 󰊤  $branch ](bg:color_aqua fg:dark_aqua)'
 
 [git_status]
 conflicted = '🏳 '
-ahead = '⇡${count}'
+ahead = '󰁟 ${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
+behind = '󰁇 ${count}'
 up_to_date = ''
-untracked = '🤷 '
-stashed = '📦 '
-modified = '📝 '
+untracked = '󰎔 '
+stashed = '󰘷 '
+modified = ' '
 staged = '[++\($count\)](green)'
-renamed = '👅 '
-deleted = '🗑 '
+renamed = '󱍸 '
+deleted = '󰈸 '
 format = '[$all_status$ahead_behind](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
 
 [aws]
