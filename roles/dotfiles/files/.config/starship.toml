@@ -59,21 +59,21 @@ truncation_length = 3
 truncation_symbol = ""
 
 [git_branch]
-format = '[─](fg:color_aqua)[ 󰊤  $branch ](bg:color_aqua fg:dark_aqua)'
+format = '[─](fg:color_aqua)[ 󰊤  $branch ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
 
 [git_status]
-conflicted = ' '
-ahead = '󰜷 ${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '󰜮 ${count}'
+conflicted = '[─](fg:color_aqua)[ ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+ahead = '[─](fg:color_aqua)[${count} 󰜷 ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+diverged = '[─](fg:color_aqua)[⇕⇡${ahead_count}⇣${behind_count}](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+behind = '[─](fg:color_aqua)[${count} 󰜮 ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
 up_to_date = ''
-untracked = ' '
-stashed = ' '
-modified = ' '
-staged = '[++\($count\)](green)'
-renamed = ' '
-deleted = ' '
-format = '[$all_status$ahead_behind](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+untracked = '[─](fg:color_aqua)[${count}  ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+stashed = '[─](fg:color_aqua)[${count}  ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+modified = '[─](fg:color_aqua)[${count}  ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+staged = '[─](fg:color_aqua)[${count}  ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+renamed = '[─](fg:color_aqua)[${count}  ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+deleted = '[─](fg:color_aqua)[${count}  ](bg:color_aqua fg:dark_aqua)[](fg:color_aqua)'
+format = '$all_status$ahead_behind'
 
 [aws]
 format = "[╟─](fg:color_orange)[   $profile ](fg:dark_orange bg:color_orange)[](fg:color_orange)\n"
