@@ -23,3 +23,6 @@ bindkey '^[[F' end-of-line
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+# Added by the Postman CLI installer
+export PATH='/Users/george/.local/bin':"$PATH"

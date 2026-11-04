@@ -60,13 +60,20 @@
     value: false
     state: present
 
-- name: Enable tap to click
-  community.general.osx_defaults:
-    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
-    key: Clicking
-    type: boolean
-    value: true
-    state: present
+# Not using osx_defaults here: System Settings may store Clicking as an int,
+# and osx_defaults fails with "Type mismatch" instead of overwriting it.
+- name: Enable tap to click (built-in and Bluetooth trackpads)
+  ansible.builtin.shell: |
+    if [ "$(defaults read {{ item }} Clicking 2>/dev/null)" = "1" ]; then
+      echo unchanged
+    else
+      defaults write {{ item }} Clicking -bool true && echo changed
+    fi
+  loop:
+    - com.apple.AppleMultitouchTrackpad
+    - com.apple.driver.AppleBluetoothMultitouch.trackpad
+  register: tap_to_click
+  changed_when: tap_to_click.stdout == "changed"
   notify: restart systemuiserver
 
 - name: Enable tap to click for current user
