@@ -3,17 +3,6 @@
   community.general.homebrew:
     state: present
 
-- name: Tap HashiCorp formulae
-  community.general.homebrew_tap:
-    name: hashicorp/tap
-    state: present
-
-- name: Trust HashiCorp tap so Homebrew will load its formulae
-  ansible.builtin.command:
-    cmd: brew trust --tap hashicorp/tap
-  register: hashicorp_trust
-  changed_when: "'Already trusted' not in hashicorp_trust.stdout + hashicorp_trust.stderr"
-
 - name: Install command line tools
   community.general.homebrew:
     name:
@@ -30,7 +19,7 @@
       - helm
       - shellcheck
       - ansible
-      - hashicorp/tap/terraform
+      - tenv
       - swiftlint
       - swiftformat
       - zsh-history-substring-search

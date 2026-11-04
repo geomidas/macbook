@@ -1,5 +1,5 @@
 # My macbook setup
-Mainly used for SRE, DevOps, Linux Sysadmins.
+Mainly used for sofware engineering.
 
 ## Run setup.sh
 ```bash
@@ -8,7 +8,7 @@ Mainly used for SRE, DevOps, Linux Sysadmins.
 This single command handles everything: installs Xcode tools, Homebrew, Ansible, and runs the full configuration.
 
 This will setup:
-- Command line tools (git, kubectl, helm, ansible, terraform, etc.)
+- Command line tools (git, kubectl, helm, ansible, tenv, etc.)
 - GUI applications (iTerm2, Chrome, Docker Desktop, etc.)
 - Dotfiles configuration (.zshrc, .aliases, .vimrc, etc.)
 - macOS system settings
