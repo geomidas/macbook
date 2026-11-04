@@ -3,6 +3,17 @@
   community.general.homebrew:
     state: present
 
+- name: Tap HashiCorp formulae
+  community.general.homebrew_tap:
+    name: hashicorp/tap
+    state: present
+
+- name: Trust HashiCorp tap so Homebrew will load its formulae
+  ansible.builtin.command:
+    cmd: brew trust --tap hashicorp/tap
+  register: hashicorp_trust
+  changed_when: "'Already trusted' not in hashicorp_trust.stdout + hashicorp_trust.stderr"
+
 - name: Install command line tools
   community.general.homebrew:
     name:
@@ -11,7 +22,6 @@
       - fzf
       - fzf-tab
       - tree
-      - tldr
       - wget
       - node
       - watch
@@ -20,7 +30,7 @@
       - helm
       - shellcheck
       - ansible
-      - terraform
+      - hashicorp/tap/terraform
       - swiftlint
       - swiftformat
       - zsh-history-substring-search
@@ -30,10 +40,14 @@
       - font-hack-nerd-font
       - font-m+-nerd-font
       - font-profont-nerd-font
-      - font-fira-code-nerd-font
       - awscli
-      - azure-cli
     state: present
+
+- name: Register Homebrew-installed fonts with macOS
+  ansible.builtin.command:
+    cmd: swift {{ role_path }}/files/register-fonts.swift
+  register: font_registration
+  changed_when: "'registered=0 ' not in font_registration.stdout"
 
 - name: Check if iTerm2 is already installed
   ansible.builtin.stat:
@@ -59,13 +73,13 @@
     install_options: appdir=/Applications
   when: not chrome_app.stat.exists
 
-- name: Install GUI applications
-  community.general.homebrew_cask:
-    name:
-      - gcloud-cli
-      - cursor
-      - cursor-cli
-      - the-unarchiver
-      - docker-desktop
-    state: present
-    install_options: appdir=/Applications
+#- name: Install GUI applications
+#  community.general.homebrew_cask:
+#    name:
+#      - gcloud-cli
+#      - cursor
+#      - cursor-cli
+#      - the-unarchiver
+#      - docker-desktop
+#    state: present
+#    install_options: appdir=/Applications
