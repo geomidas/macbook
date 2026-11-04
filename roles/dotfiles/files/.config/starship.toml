@@ -20,11 +20,8 @@ $character"""
 palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
-color_fg0 = '#000000'
-color_bg1 = '#3c3836'
-color_bg3 = '#665c54'
-color_blue = '#635CC4'
-dark_blue = '#2C2958'
+color_blue1 = '#635CC4'
+dark_blue1 = '#2C2958'
 color_blue2 = '#097E99'
 dark_blue2 = '#033844'
 color_blue3 = '#0a8caa'
@@ -96,11 +93,11 @@ format = "[╟─](fg:color_pink)[  ( $version) ](fg:dark_pink bg:color_pi
 format = "[╟─](fg:color_purple)[ 󱁢 ( $workspace) ](fg:dark_purple bg:color_purple)[](fg:color_purple)\n"
 
 [docker_context]
-format = '[╟─](fg:color_blue)[ 󰡨 ( $context) ](fg:dark_blue bg:color_blue)][](fg:color_blue)'
+format = '[╟─](fg:color_blue1)[ 󰡨 ( $context) ](fg:dark_blue1 bg:color_blue1)][](fg:color_blue1)'
 
 [kubernetes]
 disabled = false
-format = "[╟─](fg:color_blue)[ 󱃾  $context $namespace ](fg:dark_blue bg:color_blue)[](fg:color_blue)\n"
+format = "[╟─](fg:color_blue1)[ 󱃾  $context $namespace ](fg:dark_blue1 bg:color_blue1)[](fg:color_blue1)\n"
 
 [[kubernetes.contexts]]
 context_pattern = "arn.*cluster/(?P<cluster>[\\w-]+)"
