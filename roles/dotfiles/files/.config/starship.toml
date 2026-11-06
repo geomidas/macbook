@@ -73,9 +73,9 @@ deleted = '[─](fg:color_aqua)[${count}  ](bg:color_aqua fg:dark_aqua)[�
 format = '$all_status$ahead_behind'
 
 [aws]
-format = "[╟─](fg:color_orange)[   $profile ](fg:dark_orange bg:color_orange)[](fg:color_orange)\n"
+format = "[╟─](fg:color_orange)[   $profile $region ](fg:dark_orange bg:color_orange)[](fg:color_orange)\n"
 [aws.profile_aliases]
-'prod/dp-uc-platform-use1-dev/AWS_UCI_CloudSupport_L2_PS' = 'CloudSupport'
+'example_of_long_account_name' = 'Example'
 
 [rust]
 format = '[╟─](fg:color_pink)[  ( $version) ](fg:dark_pink bg:color_pink)][](fg:color_pink)'
