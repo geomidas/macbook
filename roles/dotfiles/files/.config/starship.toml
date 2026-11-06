@@ -105,7 +105,7 @@ context_alias = "eks-$cluster"
 
 [time]
 disabled = false
-time_format = "%R"
+time_format = "%T"
 format = "[╓─](fg:color_yellow)[ 󰥔  $time ](fg:dark_yellow bg:color_yellow)[](fg:color_yellow)\n"
 
 [line_break]
