@@ -14,7 +14,6 @@ $git_status\
 $line_break\
 [║](fg:color_blue2)\
 $line_break\
-[╙─](fg:color_blue2)\
 $character"""
 
 palette = 'gruvbox_dark'
@@ -51,7 +50,7 @@ Linux = " 󰌽 "
 Debian = " 󰣚 "
 
 [directory]
-format = "[╟─](fg:color_blue2)[](fg:color_blue2)[   $path ](fg:dark_blue2 bg:color_blue2)[](fg:color_blue2)"
+format = "[╟─](fg:color_blue2)[](fg:color_blue2)[   $path ](fg:dark_blue2 bg:color_blue2)[](fg:color_blue2)"
 truncation_length = 3
 truncation_symbol = ""
 
@@ -108,13 +107,10 @@ disabled = false
 time_format = "%T"
 format = "[╓─](fg:color_yellow)[ 󰥔  $time ](fg:dark_yellow bg:color_yellow)[](fg:color_yellow)\n"
 
-[line_break]
-disabled = false
-
 [character]
 disabled = false
-success_symbol = '[ ](fg:color_blue3)'
-error_symbol = '[ ](fg:color_yellow)'
+success_symbol = '[╙─](fg:color_blue3)'
+error_symbol = '[╙─](fg:color_yellow)'
 vimcmd_symbol = '[ ](bold fg:color_green)'
 vimcmd_replace_one_symbol = '[ ](bold fg:color_purple)'
 vimcmd_replace_symbol = '[ ](bold fg:color_purple)'
